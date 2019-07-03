@@ -14,7 +14,7 @@ class SixthTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        names = ["Kill Weight Mud","Pit Gain From Slug","Level Drop After Slug Pumped","Pipe Displacement","Triplex Pump Output","Mud Compression","Bottoms Up Time","Pressure Applied for FIT", "OH Diameter From Lag Time", "Estimated Stuck Point"]
+        names = ["Убедиться,  что диски: одного рисунка, размера, цвета","Убедиться, что у протектора резины одинаковый рисунок и отсутсвуют повреждения","Проверьте название и размер на боковой части резины каждого колеса"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,9 +39,21 @@ class SixthTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel?.text = names [indexPath.row]
-        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 20)
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+            } else {
+                cell.accessoryType = .checkmark
+            }
+        }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,4 +110,5 @@ class SixthTableViewController: UITableViewController {
     }
     */
 
+}
 }

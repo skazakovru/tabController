@@ -15,7 +15,7 @@ class FourthTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        names = ["Kill Weight Mud","Pit Gain From Slug","Level Drop After Slug Pumped","Pipe Displacement","Triplex Pump Output","Mud Compression","Bottoms Up Time","Pressure Applied for FIT", "OH Diameter From Lag Time", "Estimated Stuck Point"]
+        names = ["Тонировка","Сигнализация","Магнитола","Телевизор","Коврики","Защита решетки радиатора и картера","Подкрылки","Документация на сигнализацию", "Документация на магнитолу/телевизор вместе с коробками"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,10 +40,22 @@ class FourthTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel?.text = names [indexPath.row]
-        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 20)
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+            } else {
+                cell.accessoryType = .checkmark
+            }
+        }
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -100,3 +112,4 @@ class FourthTableViewController: UITableViewController {
     */
 
 }
+

@@ -14,7 +14,7 @@ class FifthTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        names = ["Kill Weight Mud","Pit Gain From Slug","Level Drop After Slug Pumped","Pipe Displacement","Triplex Pump Output","Mud Compression","Bottoms Up Time","Pressure Applied for FIT", "OH Diameter From Lag Time", "Estimated Stuck Point"]
+        names = ["Убедиться, что авто вымыт, без остатков целофана, подтеков антикора/смазки и разводов","Осмотреть автомобиль с разных сторон/углов на отсутсвие бликов, или разных оттенков краски","Визуально убедиться в одинаковости зазоров между деталями кузова","Визуально убедиться на отсутсвие царапин, сколов и подтеков краски на кузове","Убедитесь, что на стыках кузова и прилегающего пластика отсутствует светлое вещество, похожее на остатки полировки"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,10 +39,22 @@ class FifthTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel?.text = names [indexPath.row]
-        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 20)
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+            } else {
+                cell.accessoryType = .checkmark
+            }
+        }
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -99,3 +111,4 @@ class FifthTableViewController: UITableViewController {
     */
 
 }
+

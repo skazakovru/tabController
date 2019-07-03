@@ -16,7 +16,7 @@ class FirstTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        names = ["Kill Weight Mud","Pit Gain From Slug","Level Drop After Slug Pumped","Pipe Displacement","Triplex Pump Output","Mud Compression","Bottoms Up Time","Pressure Applied for FIT", "OH Diameter From Lag Time", "Estimated Stuck Point"]
+        names = ["Инструкция к автомобилю","Сервисная книжка с отметками о продаже и печатями","ПТС (зеленая бумажка) с печатями и техническими данными на автомобиль","Договор Купли-Продажи (не менее 2-х комплектов) c подписями продавца и покупателя и печатями автосалона"]
         
         if (UserDefaults.standard.value(forKey: "checkmarks") as? NSData) != nil {
          
@@ -46,7 +46,8 @@ class FirstTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel?.text = names [indexPath.row]
-        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 20)
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

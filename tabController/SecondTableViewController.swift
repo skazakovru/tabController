@@ -13,7 +13,7 @@ class SecondTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                names = ["Kill ","Pit ","Level ","Pipe","Triplex","Mud ","Bottoms","Pressure", "OH D", "Estimated "]
+                names = ["Выяснить все места нанесения маркировки в автомобиле","Убедиться, что они чистые и легко читаются","Проверить совпадение VIN кода, номера двигателя и номера кузова (Frame) на маркировке с номерами, указанными в ПТС и в договоре Купли-продажи"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,9 +38,21 @@ class SecondTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel?.text = names [indexPath.row]
-        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 20)
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+            } else {
+                cell.accessoryType = .checkmark
+            }
+        }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,4 +109,5 @@ class SecondTableViewController: UITableViewController {
     }
     */
 
+}
 }
