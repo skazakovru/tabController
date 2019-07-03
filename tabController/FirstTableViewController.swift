@@ -62,6 +62,30 @@ class FirstTableViewController: UITableViewController {
             }
         } 
     }
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Добавить пункт", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Добавить к списку", style: .default) { (action) in
+            //what will happen once the user clicks on UIAlert
+            
+            names.append(textField.text!)
+            
+            self.tableView.reloadData()
+            
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Впишите новый пункт"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

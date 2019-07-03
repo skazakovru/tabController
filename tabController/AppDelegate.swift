@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //To modify back button to just back icon:
         
         BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+        
+//        Changing color of back button to white:
+        UINavigationBar.appearance().tintColor = UIColor.darkGray
         // Override point for customization after application launch.
         return true
     }

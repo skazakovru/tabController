@@ -158,7 +158,7 @@
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="14.732142857142856"/>
         </scene>
-        <!--Title-->
+        <!--Из салона автомобиля-->
         <scene sceneID="5dB-P3-xje">
             <objects>
                 <tableViewController storyboardIdentifier="I" id="tHE-mm-g6I" customClass="NinethTableViewController" customModule="tabController" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,13 +181,15 @@
                             <outlet property="delegate" destination="tHE-mm-g6I" id="OUo-bK-2kl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="Vbs-Ve-ueq"/>
+                    <navigationItem key="navigationItem" title="Из салона автомобиля" id="Vbs-Ve-ueq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tOw-iA-Oi7"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTr-zd-hcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-31.884057971014496" y="775.44642857142856"/>
         </scene>
-        <!--Title-->
+        <!--Проверка под капотом-->
         <scene sceneID="VvH-Sk-jm8">
             <objects>
                 <tableViewController storyboardIdentifier="H" id="3L1-AS-f2c" customClass="EighthTableViewController" customModule="tabController" customModuleProvider="target" sceneMemberID="viewController">
@@ -210,7 +212,9 @@
                             <outlet property="delegate" destination="3L1-AS-f2c" id="GNJ-1W-EB9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="B5z-Ja-w7h"/>
+                    <navigationItem key="navigationItem" title="Проверка под капотом" id="B5z-Ja-w7h">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dqN-uy-hUI"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IE-1E-TyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -302,7 +306,9 @@
                             <outlet property="delegate" destination="9UI-zh-OIp" id="Grb-6v-55z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Осмотр колес" id="eQ6-kn-imY"/>
+                    <navigationItem key="navigationItem" title="Осмотр колес" id="eQ6-kn-imY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ptC-VN-Si3"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc5-7J-gCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -331,7 +337,9 @@
                             <outlet property="delegate" destination="tgH-Kk-aeY" id="cUF-p1-H44"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Кузов и его элементы" id="iEm-Tl-65W"/>
+                    <navigationItem key="navigationItem" title="Кузов и его элементы" id="iEm-Tl-65W">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iPe-1i-yjm"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZr-sJ-JDv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -361,7 +369,13 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Документы" id="0lu-Oj-M1Z"/>
+                    <navigationItem key="navigationItem" title="Документы" id="0lu-Oj-M1Z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NR7-QN-oNE">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="MYp-Ry-VNu" id="LfA-cR-Xht"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8a-P8-MX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -392,7 +406,9 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Маркировка" id="PSR-6t-Awv"/>
+                    <navigationItem key="navigationItem" title="Маркировка" id="PSR-6t-Awv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="X4z-Y5-cei"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1g-rZ-Yyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -422,7 +438,9 @@
                             <outlet property="delegate" destination="9qG-FI-jbo" id="MzH-ME-9v4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Внешний осмотр" id="dz3-ay-315"/>
+                    <navigationItem key="navigationItem" title="Внешний осмотр" id="dz3-ay-315">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yEG-Uw-d6w"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH1-te-RGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
