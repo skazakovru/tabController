@@ -10,12 +10,16 @@ import UIKit
 
 class SecondTableViewController: UITableViewController {
     
-      var names = ["Выяснить все места нанесения маркировки в автомобиле","Убедиться, что они чистые и легко читаются","Проверить совпадение VIN кода, номера двигателя и номера кузова (Frame) на маркировке с номерами, указанными в ПТС и в договоре Купли-продажи"]
+      var names2 = ["Выяснить все места нанесения маркировки в автомобиле","Убедиться, что они чистые и легко читаются","Проверить совпадение VIN кода, номера двигателя и номера кузова (Frame) на маркировке с номерами, указанными в ПТС и в договоре Купли-продажи"]
 
+        let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        if let items2 = defaults.array(forKey: "NamesArray2") as? [String] {
+            names2 = items2
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,13 +36,13 @@ class SecondTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return names.count
+        return names2.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        cell?.textLabel?.text = names [indexPath.row]
+        cell?.textLabel?.text = names2 [indexPath.row]
         cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
@@ -110,5 +114,33 @@ class SecondTableViewController: UITableViewController {
     }
     */
 
+}
+    //Mark-Add new items
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Добавить пункт", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Добавить к списку", style: .default) { (action) in
+            //what will happen once the user clicks on UIAlert
+            
+            self.names2.append(textField.text!)
+            
+            self.defaults.setValue(self.names2, forKey: "NamesArray2")
+            
+            self.tableView.reloadData()
+            
+    }
+        
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Впишите новый пункт"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
 }
 }

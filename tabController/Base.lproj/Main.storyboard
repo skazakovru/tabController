@@ -245,7 +245,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Комплектация" id="W0i-y0-vRL">
                         <barButtonItem key="backBarButtonItem" title="&quot;&quot;" id="SNV-0F-msw"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="C18-lp-F1a"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="C18-lp-F1a">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="QpD-Ub-cA9" id="BXF-35-QgO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3S-fv-cOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,7 +411,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Маркировка" id="PSR-6t-Awv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="X4z-Y5-cei"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="X4z-Y5-cei">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="dFf-Zf-fdu" id="Tn7-Dd-g3P"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

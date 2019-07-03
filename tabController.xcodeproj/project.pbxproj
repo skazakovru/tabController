@@ -23,6 +23,7 @@
 		85CA25E122CA5A7100E548A8 /* SeventhTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA25E022CA5A7100E548A8 /* SeventhTableViewController.swift */; };
 		85CA25E322CA5A8700E548A8 /* EighthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA25E222CA5A8700E548A8 /* EighthTableViewController.swift */; };
 		85CA25E522CA5A9E00E548A8 /* NinethTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA25E422CA5A9E00E548A8 /* NinethTableViewController.swift */; };
+		85DA718322CD36D300C2E75B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DA718222CD36D300C2E75B /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		85CA25E022CA5A7100E548A8 /* SeventhTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeventhTableViewController.swift; sourceTree = "<group>"; };
 		85CA25E222CA5A8700E548A8 /* EighthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EighthTableViewController.swift; sourceTree = "<group>"; };
 		85CA25E422CA5A9E00E548A8 /* NinethTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinethTableViewController.swift; sourceTree = "<group>"; };
+		85DA718222CD36D300C2E75B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				85C0C7D222C7C37600379A39 /* AppDelegate.swift */,
 				85C0C80822C7C79700379A39 /* MainViewController.swift */,
 				85CA25D422CA59EA00E548A8 /* FirstTableViewController.swift */,
+				85DA718422CD36F400C2E75B /* Data Model */,
 				85CA25D622CA59FC00E548A8 /* SecondTableViewController.swift */,
 				85CA25D822CA5A1500E548A8 /* ThirdTableViewController.swift */,
 				85CA25DA22CA5A3000E548A8 /* FourthTableViewController.swift */,
@@ -150,6 +153,14 @@
 				85C0C7F622C7C37700379A39 /* Info.plist */,
 			);
 			path = tabControllerUITests;
+			sourceTree = "<group>";
+		};
+		85DA718422CD36F400C2E75B /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				85DA718222CD36D300C2E75B /* Item.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +298,7 @@
 				85CA25E122CA5A7100E548A8 /* SeventhTableViewController.swift in Sources */,
 				85C0C7D322C7C37600379A39 /* AppDelegate.swift in Sources */,
 				85CA25DD22CA5A4300E548A8 /* FifthTableViewController.swift in Sources */,
+				85DA718322CD36D300C2E75B /* Item.swift in Sources */,
 				85CA25D722CA59FC00E548A8 /* SecondTableViewController.swift in Sources */,
 				85C0C80922C7C79700379A39 /* MainViewController.swift in Sources */,
 				85CA25DB22CA5A3000E548A8 /* FourthTableViewController.swift in Sources */,

@@ -10,12 +10,16 @@ import UIKit
 
 class ThirdTableViewController: UITableViewController {
     
-      var names = ["Два комплекта ключей автомобиля","Запасное колесо, или докатка","Баллонный ключ и домкрат","Ключ-секретка, если колеса с секретками","Знак аварийной остановки"]
+      var names3 = ["Два комплекта ключей автомобиля","Запасное колесо, или докатка","Баллонный ключ и домкрат","Ключ-секретка, если колеса с секретками","Знак аварийной остановки"]
+    
+       let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        if let items3 = defaults.array(forKey: "NamesArray3") as? [String] {
+            names3 = items3
+        }
 
 
         // Uncomment the following line to preserve selection between presentations
@@ -34,13 +38,13 @@ class ThirdTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return names.count
+        return names3.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        cell?.textLabel?.text = names [indexPath.row]
+        cell?.textLabel?.text = names3 [indexPath.row]
         cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
@@ -111,5 +115,33 @@ class ThirdTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Добавить пункт", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Добавить к списку", style: .default) { (action) in
+            //what will happen once the user clicks on UIAlert
+            
+            self.names3.append(textField.text!)
+            
+            self.defaults.setValue(self.names3, forKey: "NamesArray3")
+            
+            self.tableView.reloadData()
+            
+        }
+        
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Впишите новый пункт"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    }
+    
 
-}

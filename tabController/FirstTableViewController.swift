@@ -10,16 +10,33 @@ import UIKit
 
 class FirstTableViewController: UITableViewController {
  
-     var names =  ["Инструкция к автомобилю","Сервисная книжка с отметками о продаже и печатями","ПТС (зеленая бумажка) с печатями и техническими данными на автомобиль","Договор Купли-Продажи (не менее 2-х комплектов) c подписями продавца и покупателя и печатями автосалона"]
+     var names =  [Item]()
    
     let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let items = defaults.array(forKey: "NamesArray") as? [String] {
-            names = items
-        }
+        let newItem = Item()
+        newItem.title = "Инструкция к автомобилю"
+        names.append(newItem)
+        
+        let newItem2 = Item()
+        newItem2.title = " Сервисная книжка с отметками о продаже и печатями"
+        names.append(newItem2)
+        
+        let newItem3 = Item()
+        newItem3.title = "ПТС (зеленая бумажка) с техническими данными автомобиля и печатями"
+        names.append(newItem3)
+        
+        let newItem4 = Item()
+        newItem4.title = "Договор Купли-Продажи (не менее 2-х экземпляров) с подписями продавца и покупателя и печатями автосалона"
+        names.append(newItem4)
+        
+//        
+//        if let items = defaults.array(forKey: "NamesArray") as? [String] {
+//            names = items
+//        }
     
 
         // Uncomment the following line to preserve selection between presentations
@@ -44,21 +61,34 @@ class FirstTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        cell?.textLabel?.text = names [indexPath.row]
+        cell?.textLabel?.text = names[indexPath.row].title
+        
+        //Ternary operator > value = condition ? valueIfTrue : valueIfFalse
+        
+        cell?.accessoryType = names[indexPath.row].done ? .checkmark : .none
+
+        
+//        if names[indexPath.row].done == true {
+//            cell?.accessoryType = .checkmark
+//        } else {
+//            cell?.accessoryType = .none
+//        }
+        
         cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
-            } else {
-                cell.accessoryType = .checkmark
-            }
-        } 
+        //Setting roperty of the selected item:
+        
+        names[indexPath.row].done = !names[indexPath.row].done
+        
+        
+        tableView.reloadData()
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+
     }
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -69,7 +99,10 @@ class FirstTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Добавить к списку", style: .default) { (action) in
             //what will happen once the user clicks on UIAlert
             
-            self.names.append(textField.text!)
+            let newItem = Item()
+            newItem.title = textField.text!
+            
+            self.names.append(newItem)
             
             self.defaults.setValue(self.names, forKey: "NamesArray")
             
@@ -85,6 +118,16 @@ class FirstTableViewController: UITableViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            names.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            
+        }
+    
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
