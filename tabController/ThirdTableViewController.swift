@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 class ThirdTableViewController: UITableViewController {
+    
+      var names = ["Два комплекта ключей автомобиля","Запасное колесо, или докатка","Баллонный ключ и домкрат","Ключ-секретка, если колеса с секретками","Знак аварийной остановки"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        names = ["Два комплекта ключей автомобиля","Запасное колесо, или докатка","Баллонный ключ и домкрат","Ключ-секретка, если колеса с секретками","Знак аварийной остановки"]
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

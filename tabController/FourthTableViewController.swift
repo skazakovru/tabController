@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 class FourthTableViewController: UITableViewController {
+    
+      var names = ["Тонировка","Сигнализация","Магнитола","Телевизор","Коврики","Защита решетки радиатора и картера","Подкрылки","Документация на сигнализацию", "Документация на магнитолу/телевизор вместе с коробками"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        names = ["Тонировка","Сигнализация","Магнитола","Телевизор","Коврики","Защита решетки радиатора и картера","Подкрылки","Документация на сигнализацию", "Документация на магнитолу/телевизор вместе с коробками"]
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

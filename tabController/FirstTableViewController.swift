@@ -8,21 +8,19 @@
 import Foundation
 import UIKit
 
-  var names = [String]()
-
 class FirstTableViewController: UITableViewController {
  
+     var names =  ["Инструкция к автомобилю","Сервисная книжка с отметками о продаже и печатями","ПТС (зеленая бумажка) с печатями и техническими данными на автомобиль","Договор Купли-Продажи (не менее 2-х комплектов) c подписями продавца и покупателя и печатями автосалона"]
+   
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        names = ["Инструкция к автомобилю","Сервисная книжка с отметками о продаже и печатями","ПТС (зеленая бумажка) с печатями и техническими данными на автомобиль","Договор Купли-Продажи (не менее 2-х комплектов) c подписями продавца и покупателя и печатями автосалона"]
-        
-        if (UserDefaults.standard.value(forKey: "checkmarks") as? NSData) != nil {
-         
+        if let items = defaults.array(forKey: "NamesArray") as? [String] {
+            names = items
         }
- 
+    
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -71,7 +69,9 @@ class FirstTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Добавить к списку", style: .default) { (action) in
             //what will happen once the user clicks on UIAlert
             
-            names.append(textField.text!)
+            self.names.append(textField.text!)
+            
+            self.defaults.setValue(self.names, forKey: "NamesArray")
             
             self.tableView.reloadData()
             

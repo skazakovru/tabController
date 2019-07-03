@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class SecondTableViewController: UITableViewController {
+    
+      var names = ["Выяснить все места нанесения маркировки в автомобиле","Убедиться, что они чистые и легко читаются","Проверить совпадение VIN кода, номера двигателя и номера кузова (Frame) на маркировке с номерами, указанными в ПТС и в договоре Купли-продажи"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                names = ["Выяснить все места нанесения маркировки в автомобиле","Убедиться, что они чистые и легко читаются","Проверить совпадение VIN кода, номера двигателя и номера кузова (Frame) на маркировке с номерами, указанными в ПТС и в договоре Купли-продажи"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

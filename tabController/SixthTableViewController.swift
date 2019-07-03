@@ -9,12 +9,13 @@ import Foundation
 import UIKit
 
 class SixthTableViewController: UITableViewController {
+    
+    var names = ["Убедиться,  что диски: одного рисунка, размера, цвета","Убедиться, что у протектора резины одинаковый рисунок и отсутсвуют повреждения","Проверьте название и размер на боковой части резины каждого колеса"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        names = ["Убедиться,  что диски: одного рисунка, размера, цвета","Убедиться, что у протектора резины одинаковый рисунок и отсутсвуют повреждения","Проверьте название и размер на боковой части резины каждого колеса"]
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
