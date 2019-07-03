@@ -33,10 +33,10 @@ class FirstTableViewController: UITableViewController {
         newItem4.title = "Договор Купли-Продажи (не менее 2-х экземпляров) с подписями продавца и покупателя и печатями автосалона"
         names.append(newItem4)
         
-//        
-//        if let items = defaults.array(forKey: "NamesArray") as? [String] {
-//            names = items
-//        }
+        
+        if let items = defaults.array(forKey: "NamesArray") as? [Item] {
+            names = items
+        }
     
 
         // Uncomment the following line to preserve selection between presentations
