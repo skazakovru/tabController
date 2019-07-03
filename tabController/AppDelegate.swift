@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let BarButtonItemAppearance = UIBarButtonItem.appearance()
+        
+        //To modify back button to just back icon:
+        
+        BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         // Override point for customization after application launch.
         return true
     }

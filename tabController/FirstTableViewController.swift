@@ -16,6 +16,7 @@ class FirstTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         names = ["Инструкция к автомобилю","Сервисная книжка с отметками о продаже и печатями","ПТС (зеленая бумажка) с печатями и техническими данными на автомобиль","Договор Купли-Продажи (не менее 2-х комплектов) c подписями продавца и покупателя и печатями автосалона"]
         
         if (UserDefaults.standard.value(forKey: "checkmarks") as? NSData) != nil {
