@@ -17,9 +17,6 @@ class FirstTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-        print(dataFilePath)
         
         let newItem = Item()
         newItem.title = "Инструкция к автомобилю"
@@ -90,6 +87,17 @@ class FirstTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            names.remove(at: indexPath.row)
+            saveItems()
+            loadItems()
+        }
+    }
+    
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
@@ -118,6 +126,8 @@ class FirstTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    
+    
     func saveItems() {
         
         let encoder = PropertyListEncoder()
@@ -144,6 +154,7 @@ class FirstTableViewController: UITableViewController {
             }
     }
     
+        
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
