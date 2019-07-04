@@ -12,10 +12,14 @@ class FirstTableViewController: UITableViewController {
  
      var names =  [Item]()
    
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
+        print(dataFilePath)
         
         let newItem = Item()
         newItem.title = "Инструкция к автомобилю"
@@ -33,10 +37,7 @@ class FirstTableViewController: UITableViewController {
         newItem4.title = "Договор Купли-Продажи (не менее 2-х экземпляров) с подписями продавца и покупателя и печатями автосалона"
         names.append(newItem4)
         
-        
-        if let items = defaults.array(forKey: "NamesArray") as? [Item] {
-            names = items
-        }
+        loadItems()
     
 
         // Uncomment the following line to preserve selection between presentations
@@ -84,8 +85,7 @@ class FirstTableViewController: UITableViewController {
         
         names[indexPath.row].done = !names[indexPath.row].done
         
-        
-        tableView.reloadData()
+        saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
 
@@ -104,10 +104,8 @@ class FirstTableViewController: UITableViewController {
             
             self.names.append(newItem)
             
-            self.defaults.setValue(self.names, forKey: "NamesArray")
-            
-            self.tableView.reloadData()
-            
+//            self.defaults.setValue(self.names, forKey: "NamesArray")
+            self.saveItems()
         }
         
         alert.addTextField { (alertTextField) in
@@ -120,13 +118,31 @@ class FirstTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            names.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            
+    func saveItems() {
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(names)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding item array, \(error)")
         }
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            
+            let decoder = PropertyListDecoder()
+            do {
+            names = try decoder.decode([Item].self, from: data)
+            }  catch {
+                print("Error decoding item array, \(error)")
+            }
+    }
     
     }
     /*
@@ -183,5 +199,5 @@ class FirstTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
+
