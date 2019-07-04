@@ -10,26 +10,32 @@ import UIKit
 
 class EighthTableViewController: UITableViewController {
     
-      var names = ["Проверить уровень масла, антифриза, тормозной жидкости и омывающей, - требуйте долива, если уровень меньше нормы","При помощи фонарика осмотреть двигатель на отсутствие подтеков масла, запотеваний","Снять верхнюю крышку (кожух) двигателя и убедиться в отстутствии подтеков масла и наличия посторонних предметов"]
+    var names =  [Item]()
+    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        let newItem = Item()
+        newItem.title = "Проверить уровень масла, антифриза, тормозной жидкости и омывающей, - требуйте долива, если уровень меньше нормы"
+        names.append(newItem)
+        
+        let newItem2 = Item()
+        newItem2.title = "При помощи фонарика осмотреть двигатель на отсутствие подтеков масла, запотеваний"
+        names.append(newItem2)
+        
+        let newItem3 = Item()
+        newItem3.title = "Снять верхнюю крышку (кожух) двигателя и убедиться в отстутствии подтеков масла и наличия посторонних предметов"
+        names.append(newItem3)
+        
+        loadItems()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -39,76 +45,83 @@ class EighthTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
-        cell?.textLabel?.text = names [indexPath.row]
+        cell?.textLabel?.text = names [indexPath.row].title
+        
+        cell?.accessoryType = names[indexPath.row].done ? .checkmark : .none
+        
         cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.font = UIFont (name: "Avenir Next", size: 14)
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-            if cell.accessoryType == .checkmark {
-                cell.accessoryType = .none
-            } else {
-                cell.accessoryType = .checkmark
-            }
+        //Setting property of the selected item:
+        
+        names[indexPath.row].done = !names[indexPath.row].done
+        
+        saveItems()
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            names.remove(at: indexPath.row)
+            saveItems()
+            loadItems()
         }
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Добавить пункт", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Добавить к списку", style: .default) { (action) in
+            //what will happen once the user clicks on UIAlert
+            
+            let newItem = Item()
+            newItem.title = textField.text!
+            
+            self.names.append(newItem)
+            
+            self.saveItems()
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Впишите новый пункт"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+        func saveItems() {
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(names)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding item array, \(error)")
+        }
+        
+        self.tableView.reloadData()
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+        func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            
+            let decoder = PropertyListDecoder()
+            do {
+                names = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error decoding item array, \(error)")
+            }
+        }
+}
 }

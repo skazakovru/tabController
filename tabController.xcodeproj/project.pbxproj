@@ -119,8 +119,8 @@
 			children = (
 				85C0C7D222C7C37600379A39 /* AppDelegate.swift */,
 				85C0C80822C7C79700379A39 /* MainViewController.swift */,
-				85CA25D422CA59EA00E548A8 /* FirstTableViewController.swift */,
 				85DA718422CD36F400C2E75B /* Data Model */,
+				85CA25D422CA59EA00E548A8 /* FirstTableViewController.swift */,
 				85CA25D622CA59FC00E548A8 /* SecondTableViewController.swift */,
 				85CA25D822CA5A1500E548A8 /* ThirdTableViewController.swift */,
 				85CA25DA22CA5A3000E548A8 /* FourthTableViewController.swift */,
